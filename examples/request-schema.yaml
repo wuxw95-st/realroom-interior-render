@@ -1,0 +1,29 @@
+# Example request description consumed by the skill/workflow layer.
+mode: furniture_place
+
+inputs:
+  room_source: room-angle-01.jpg
+  design_reference: approved-design.jpg
+  object_references:
+    - image: white-wardrobe.jpg
+      name: white wardrobe
+      dimensions_m: [1.24, 2.0, 0.6] # width, height, depth
+
+constraints:
+  room_anchor:
+    wall_length_m: 3.12
+  placement:
+    target: against the specified wall
+    rotation_deg: 0
+  preserve:
+    - walls
+    - windows
+    - doors
+    - ceiling
+    - camera viewpoint
+    - all existing furniture not explicitly replaced
+
+output:
+  one_image_per_source: true
+  photorealistic: true
+  no_collage: true
