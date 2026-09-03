@@ -1,0 +1,52 @@
+version: 1
+
+preservation:
+  architecture_lock: maximum
+  camera_lock: maximum
+  protect_unrequested_objects: true
+  allow_new_openings: false
+  allow_wall_changes: false
+  allow_camera_reframe: false
+
+controls:
+  depth:
+    engine: Depth Anything V2
+    enabled: true
+    strength:
+      strict_edit: 0.95
+      material_replace: 0.90
+      furniture_place: 0.90
+      full_restyle: 0.80
+  segmentation:
+    enabled: true
+    strength:
+      strict_edit: 0.90
+      material_replace: 0.95
+      furniture_place: 0.85
+      full_restyle: 0.75
+  reference_adapter:
+    enabled_when_reference_present: true
+    apply_to_edit_region_only: true
+
+sampling:
+  denoise:
+    strict_edit: 0.20
+    material_replace: 0.30
+    furniture_place: 0.38
+    full_restyle: 0.55
+  note: Values are starting points and should be tuned by backend/model.
+
+multi_angle:
+  separate_outputs: true
+  carry_approved_design_state: true
+  preserve_each_source_camera: true
+  prohibit_collage_by_default: true
+
+validation:
+  reject_architecture_change: true
+  reject_camera_change: true
+  reject_protected_object_change: true
+  reject_wrong_furniture_orientation: true
+  reject_obvious_scale_error: true
+  reject_material_mask_leak: true
+  reject_cross_angle_style_drift: true
